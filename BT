@@ -1,0 +1,157 @@
+
+package BAI1;
+
+public class ChuyenXe {
+	private String maSoXe;
+	private String hoTen;
+	private String soXe;
+	private double doanhThu;
+	public ChuyenXe(String maSoXe, String hoTen, String soXe, double doanhThu) {
+		// super();
+		this.maSoXe = maSoXe;
+		this.hoTen = hoTen;
+		this.soXe = soXe;
+		this.doanhThu = doanhThu;
+	}
+	public String getMaSoXe() {
+		return maSoXe;
+	}
+	public void setMaSoXe(String maSoXe) {
+		this.maSoXe = maSoXe;
+	}
+	public String getHoTen() {
+		return hoTen;
+	}
+	public void setHoTen(String hoTen) {
+		this.hoTen = hoTen;
+	}
+	public String getSoXe() {
+		return soXe;
+	}
+	public void setSoXe(String soXe) {
+		this.soXe = soXe;
+	}
+	public double getDoanhThu() {
+		return doanhThu;
+	}
+	public void setDoanhThu(double doanhThu) {
+		this.doanhThu = doanhThu;
+	}
+	
+	@Override
+	public String toString() {
+		return "ChuyenXe [maSoXe=" + maSoXe + ", hoTen=" + hoTen + ", soXe=" + soXe + ", doanhThu=" + doanhThu + "]";
+	}
+	
+	
+}
+
+package BAI1;
+
+public class ChuyenXeNgoaiThanh extends ChuyenXe {
+	private String noDen;
+	private int soNgayDi;
+	
+	public ChuyenXeNgoaiThanh(String maSoXe, String hoTen, String soXe, double doanhThu, String noDen, int soNgayDi) {
+		super(maSoXe, hoTen, soXe, doanhThu);
+		this.noDen = noDen;
+		this.soNgayDi = soNgayDi;
+	}
+
+	public String getNoDen() {
+		return noDen;
+	}
+
+	public void setNoDen(String noDen) {
+		this.noDen = noDen;
+	}
+
+	public int getSoNgayDi() {
+		return soNgayDi;
+	}
+
+	public void setSoNgayDi(int soNgayDi) {
+		this.soNgayDi = soNgayDi;
+	}
+	
+	public double doanhThuNgoaiThanh() {
+		return this.soNgayDi*this.getDoanhThu();
+	}
+
+	@Override
+	public String toString() {
+		return "ChuyenXeNgoaiThanh [noDen=" + noDen + ", soNgayDi=" + soNgayDi + "]";
+	}
+	
+	
+}
+
+package BAI1;
+
+public class ChuyenXeNoiThanh extends ChuyenXe {
+	
+	private int soTuyen;
+	private double soKm;
+	
+	public ChuyenXeNoiThanh(String maSoXe, String hoTen, String soXe, double doanhThu, int soTuyen, double soKm) {
+		super(maSoXe, hoTen, soXe, doanhThu);
+		this.soTuyen = soTuyen;
+		this.soKm = soKm;
+	}
+
+	public int getSoTuyen() {
+		return soTuyen;
+	}
+
+	public void setSoTuyen(int soTuyen) {
+		this.soTuyen = soTuyen;
+	}
+
+	public double getSoKm() {
+		return soKm;
+	}
+
+	public void setSoKm(double soKm) {
+		this.soKm = soKm;
+	}
+	
+	public double doanhThuNoiThanh() {
+		return this.soKm*this.getDoanhThu()*this.soTuyen;
+	}
+
+	@Override
+	public String toString() {
+		return "ChuyenXeNoiThanh [soTuyen=" + soTuyen + ", soKm=" + soKm + "]";
+	}
+	
+	
+	
+}
+
+package BAI1;
+
+public class text {
+	
+	public static void main(String[] args) {
+		
+		ChuyenXeNoiThanh nt = new  ChuyenXeNoiThanh("D01", "GIANG", "OOOK1", 12000, 2, 3);
+		ChuyenXeNgoaiThanh ngt = new ChuyenXeNgoaiThanh("D01", "HUONG", "OGH9", 20000, "TAY BAC", 3);
+		
+		
+		
+		System.out.println("Vay chuyen xe noi thanh co ma "+nt.getMaSoXe()+" Co tong Doanh thu noi thanh la: "+ nt.doanhThuNoiThanh());
+		System.out.println("Vay chuyen xe ngoai thanh co ma "+ngt.getMaSoXe()+" Co tong Doanh thu ngoai thanh la: "+ ngt.doanhThuNgoaiThanh());
+		System.out.println("Tong doanh thu noi thanh "+nt.getMaSoXe()+" la: "+nt.getDoanhThu());
+		System.out.println("Tong doanh thu ngoai thanh "+nt.getMaSoXe()+" la: "+ngt.getDoanhThu());
+		System.out.println("-----------------------------------------------------------");
+		
+		
+		ChuyenXeNoiThanh nt1 = new  ChuyenXeNoiThanh("D03", "Giang", "GD1", 10000, 3, 70);
+		ChuyenXeNgoaiThanh ngt1 = new ChuyenXeNgoaiThanh("D02", "HUONG", "OGH9", 23000, "TAY BAC", 2);
+		
+		System.out.println("Vay chuyen xe noi thanh co ma "+nt1.getMaSoXe()+"  Co tong Doanh thu noi thanh la: "+ nt1.doanhThuNoiThanh());
+		System.out.println("Vay chuyen xe ngoai thanh co ma "+ngt1.getMaSoXe()+" Co tong Doanh thu ngoai thanh la: "+ ngt1.doanhThuNgoaiThanh());
+		System.out.println("Tong doanh thu noi thanh "+nt1.getMaSoXe()+" la: "+nt1.getDoanhThu());
+		System.out.println("Tong doanh thu ngoai thanh "+nt1.getMaSoXe()+" la: "+ngt1.getDoanhThu());
+	}
+}
